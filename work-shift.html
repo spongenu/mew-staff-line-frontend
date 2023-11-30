@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MEW Staff</title>
+</head>
+<body>
+    <h1>SCHEDULE</h1>
+    <script src="https://static.line-scdn.net/liff/edge/versions/2.22.3/sdk.js"></script>
+    <script>
+        async function main(){
+            await liff.init({liffId:"2001915121-VyoG9pa6"})
+            .then(async () => {
+                if (liff.isLoggedIn()) {
+                    getSchedule()                             
+                } else {
+                liff.login();
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+
+        }
+
+        main()
+
+        async function getSchedule(){
+                        
+        }
+    </script>
+
+</body>
+</html>

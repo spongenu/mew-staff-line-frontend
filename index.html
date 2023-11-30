@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MEW Staff</title>
+</head>
+<body>
+    <h1>WELCOME</h1>
+    <img id="pictureUrl">
+    <p id="displayName"><b>Display Name : </b></p> 
+    <script src="https://static.line-scdn.net/liff/edge/versions/2.22.3/sdk.js"></script>
+    <script>
+        async function main(){
+            await liff.init({liffId:"2001915121-JMMk2qLA"})
+            .then(async () => {
+                if (liff.isLoggedIn()) {
+                    getUserProfile()                             
+                } else {
+                liff.login();
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+
+        }
+
+        main()
+
+        async function getUserProfile(){
+            
+            const accessToken = liff.getAccessToken();
+            console.log(accessToken);
+
+            const idToken = liff.getIDToken();
+            console.log(idToken);
+            const profile = liff.getDecodedIDToken();                    
+            document.getElementById("pictureUrl").src = profile.picture
+            document.getElementById("displayName").append(profile.name)
+            
+        }
+    </script>
+
+</body>
+</html>
